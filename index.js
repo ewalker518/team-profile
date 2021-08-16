@@ -7,6 +7,7 @@ const inquirer = require('inquirer');
 
 const teamArray = [];
 
+// Collect employee information starting with the manager
 const addManager = () => {
     return inquirer.prompt([
         {
@@ -70,12 +71,13 @@ const addManager = () => {
     });
 };
 
+// Collect information for the rest of the team
 const addEmployee = () => {
 
     console.log(`
-    =============================
-    Now add the rest of the team
-    =============================
+===================================================
+Enter employee information for the rest of the team
+===================================================
     `);
 
     return inquirer.prompt([

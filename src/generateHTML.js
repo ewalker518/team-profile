@@ -54,12 +54,14 @@ const generateIntern = function (intern) {
 
 generateHTML = (data) => {
 
+    // array for the employee cards
     pageArray = []; 
 
     for (let i = 0; i < data.length; i++) {
         const employee = data[i];
-        const role = employee.getRole(); 
+        const role = employee.getRole();
 
+        // generate cards based on the role selected for the employee
         if (role === 'Manager') {
             const managerCard = generateManager(employee);
 
@@ -80,14 +82,15 @@ generateHTML = (data) => {
         
     }
 
+    // join the cards into an array
     const employeeCards = pageArray.join('');
-    console.log(employeeCards);
-    const generateTeam = generateTeamPage(employeeCards); 
+    const generateTeam = generatePage(employeeCards); 
     return generateTeam;
 
 }
 
-const generateTeamPage = function (employeeCards) {
+// generate HTML with user input
+const generatePage = function (employeeCards) {
     return `
     <!DOCTYPE html>
     <html lang="en">

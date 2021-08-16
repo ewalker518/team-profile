@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #c4dbf6;
+}
+
+header {
+    background-color: #b23850;
+    height: 120px;
+}
+
+header h1 {
+    color: white;
+    text-align: center;
+    font-size: 4rem;
+    line-height: 105px;
+}
+
+.team-cards {
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 75px auto;
+}
+
+.card {
+    margin: auto;
+    box-shadow: 7px 5px 5px #8590aa;
+}
+
+/* .container {
+    margin: 100px auto;
+    justify-content: space-evenly;
+    display: flex;
+    align-items: center;
+} */
+
+.card-header {
+    background-color: #3b8beb;
+    color: white;
+}
+
+.card-body {
+    
+}

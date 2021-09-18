@@ -1,19 +1,27 @@
 const generateHTML = require('./src/generateHTML');
+const inquirer = require('inquirer');
+
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const fs = require('fs')
-const inquirer = require('inquirer');
 
 const teamArray = [];
 
 // Collect employee information starting with the manager
 const addManager = () => {
+
+    console.log(`
+================================================================================
+Welcome to the team profile generator! Start with the team manager's information
+================================================================================
+    `);
+
     return inquirer.prompt([
         {
             type: 'input',
             name: 'name',
-            message: 'Manager name:',
+            message: "Manager name:",
             validate: nameInput => {
                 if (nameInput) {
                     return true;
@@ -64,8 +72,11 @@ const addManager = () => {
             }
         }
     ])
-    .then(managerInput => {
-        const { name, id, email, officeNumber } = managerInput;
+    .then(function (data) {
+        const name = data.name
+        const id = 1
+        const email = data.email
+        const officeNumber = data.officeNumber
         const manager = new Manager(name, id, email, officeNumber);
         teamArray.push(manager);
     });
@@ -75,9 +86,9 @@ const addManager = () => {
 const addEmployee = () => {
 
     console.log(`
-===================================================
-Enter employee information for the rest of the team
-===================================================
+===========================================================
+Now enter the employee information for the rest of the team
+===========================================================
     `);
 
     return inquirer.prompt([
@@ -162,8 +173,15 @@ Enter employee information for the rest of the team
             default: false
         }
     ])
-    .then(employeeData => {
-        let { name, id, email, role, github, school, additionalEmployee } = employeeData;
+    .then(function (data) {
+        // let { name, id, email, role, github, school, additionalEmployee } = employeeData;
+        const name = data.name
+        const id = teamArray.length + 1
+        const email = data.email
+        const role = data.role
+        const github = data.github
+        const school = data.school
+        const additionalEmployee = data.additionalEmployee
         let employee;
         if (role === 'Engineer') {
             employee = new Engineer(name, id, email, github);
@@ -187,7 +205,7 @@ const writeFile = data => {
             console.log(err);
             return;
         } else {
-            console.log("Your team profile has successfully generated");
+            console.log("Your team profile has been successfully generated");
         }
     })
 };
